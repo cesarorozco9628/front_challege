@@ -31,7 +31,7 @@ plazo_meses = numero de meses del periodo del prestamo (la cantidad se usa en ne
 - Debera de tener las mismas validaciones y comportamiento.
 - Responsivo solo para mobile.
 - Los datos obtenidos se deberan de mostrar en una pagina nueva.
-- La pagina es con diseño libre, tener en cuenta la linea de diseño de morgana
+- La pagina nueva es con diseño libre, tener en cuenta la linea de diseño de morgana
 - Se tomara en cuenta el tiempo de desarrollo.
 
 
