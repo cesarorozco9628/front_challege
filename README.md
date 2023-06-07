@@ -14,7 +14,7 @@ Realizar el simulador que se encuentra en el portal de morgana.mx las reglas de 
 
 ----------------------------------- FORMULA PARA PAGO MENSUAL -----------------------------------------------------
 
-Precio mensual = (monto_credito * tasa_mensual) / 1 ((1 + tasa_mensual) ^ -plazo_meses)
+Pago mensual = (monto_credito * tasa_mensual) / 1 ((1 + tasa_mensual) ^ -plazo_meses)
 
 monto_credito = monto del credito pedido;
 tasa_mensual = valor proporcionado en las reglas;
