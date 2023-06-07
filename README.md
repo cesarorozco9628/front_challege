@@ -33,6 +33,7 @@ plazo_meses = numero de meses del periodo del prestamo (la cantidad se usa en ne
 - Los datos obtenidos se deberan de mostrar en una pagina nueva.
 - La pagina nueva es con diseño libre, tener en cuenta la linea de diseño de morgana
 - Se tomara en cuenta el tiempo de desarrollo.
+- Las tecnologias a usar son HTML, CSS Y JS.
 
 
 Por ultimo realizar una rama nueva y subir tus cambios a este repositorio.
