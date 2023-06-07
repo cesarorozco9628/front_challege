@@ -16,9 +16,13 @@ Realizar el simulador que se encuentra en el portal de morgana.mx las reglas de 
 
 Pago mensual = (monto_credito * tasa_mensual) / 1 ((1 + tasa_mensual) ^ -plazo_meses)
 
-monto_credito = monto del credito pedido;
+monto_credito = monto del credito pedido; 
+
+
 tasa_mensual = valor proporcionado en las reglas;
-plazo_meses = numero de meses del periodo del prestamo;
+
+
+plazo_meses = numero de meses del periodo del prestamo (la cantidad se usa en negativos para la formula);
 
 
 -------------------------------------- CRITERIOS DE ACEPTACION ----------------------------------------------------
