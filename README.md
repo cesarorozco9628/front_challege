@@ -7,7 +7,7 @@ Realizar el simulador que se encuentra en el portal de morgana.mx las reglas de 
 -------------------------------------------- REGLAS ---------------------------------------------------------------
 
 1. Precio del inmueble minimo de 500,000.
-2. Enganche de 10% al 90% (este se debe de carcular y mostrar en el input, de igual manera si ingresamos una cantidad debe de calcular el porcentaje) 
+2. Enganche de 10% al 90% (este se debe de calcular y mostrar en el input, de igual manera si ingresamos una cantidad debe de calcular el porcentaje) 
 3. El plazo seleccionado por default es de 15 años.
 4. Tasa del mostrarda del 10.5% pero para calculos de usara el valor de 0.0098.
 
