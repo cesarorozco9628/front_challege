@@ -90,12 +90,11 @@ section {
   width: 100%;
 }
 
-.simulator__values {
-  border: 1px dotted dodgerblue;
+.simulator-values {
   grid-area: left;
 }
 
-.simulator__values__head {
+.simulator-values__head {
   background-color: var(--morgana-navy);
   color: #fff;
   font-size: 20px;
@@ -103,9 +102,11 @@ section {
   line-height: 24px;
   padding: 24px 48px;
   text-align: start;
+  -webkit-clip-path: polygon(45px 0, 100% 0, 100% 100%, 0 100%, 0 45px);
+  clip-path: polygon(45px 0, 100% 0, 100% 100%, 0 100%, 0 45px);
 }
 
-.simulator__values__content {
+.simulator-values__content {
   background-color: #fff;
   display: flex;
   flex-direction: column;
@@ -130,7 +131,39 @@ section {
 .property-price__tooltip,
 .down-payment__tooltip,
 .credit-terms__tooltip {
-  font-size: 9px;
+  font-size: 11px; /* TODO: Revisar tamaño correcto */
+}
+
+.tooltip {
+  position: relative; /* making the .tooltip span a container for the tooltip text */
+  border-bottom: 1px dashed #000; /* little indicater to indicate it's hoverable */
+}
+
+.tooltip:before {
+  content: attr(data-text); /* here's the magic */
+  position: absolute;
+
+  /* vertically center */
+  top: 50%;
+  transform: translateY(-50%);
+
+  /* move to right */
+  left: 100%;
+  margin-left: 15px; /* and add a small left margin */
+
+  /* basic styles */
+  width: 190px;
+  padding: 10px;
+  border-radius: 10px;
+  background: var(--morgana-light-gray);
+  color: var(#000);
+  text-align: center;
+  font-size: 14px;
+  display: none; /* hide by default */
+}
+
+.tooltip:hover:before {
+  display: block;
 }
 
 .property-price__amount {
@@ -226,8 +259,10 @@ hr {
 
 .simulator-conditions {
   background-color: #fbfbfb;
-  border: 1px dashed darkorange;
+  font-size: 14px;
   grid-area: right;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 85% 100%, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 85% 100%, 0 100%);
 }
 
 .simulator-conditions__head {
@@ -241,7 +276,6 @@ hr {
 }
 
 .simulator-conditions__content {
-  font-size: 14px;
   padding: 24px;
 }
 
@@ -264,9 +298,9 @@ hr {
 }
 
 .simulator-conditions__footer {
-  font-size: 16px;
+  font-size: 10px;
   line-height: 16px;
-  margin-top: 32px;
+  margin: 32px 0 16px 0;
 }
 
 .button-wrapper {
@@ -299,6 +333,15 @@ button:focus-visible {
   outline: none;
 }
 
+/* Tablet styles */
+
+@media (min-width: 768px) {
+  section {
+    max-width: 720px;
+    width: 70%;
+  }
+}
+
 /* Desktop styles */
 
 @media (min-width: 992px) {
@@ -316,7 +359,7 @@ button:focus-visible {
     grid-template-columns: 1fr 1fr;
   }
 
-  .simulator__values__head {
+  .simulator-values__head {
     font-size: 24px;
     line-height: 28px;
     padding: 24px 80px;
@@ -369,10 +412,16 @@ button:focus-visible {
   .simulator-conditions__element:last-of-type {
     margin-bottom: 48px;
   }
+
+  .simulator-conditions__footer {
+    font-size: 16px;
+  }
 }
 
+/* Large Desktop styles */
+
 @media (min-width: 1200px) {
-  .simulator__values__content {
+  .simulator-values__content {
     padding: 48px;
   }
 }
