@@ -1,0 +1,264 @@
+:root {
+  --morgana-light-gray: #f5f5f5;
+  --morgana-dark-gray: #555;
+  --morgana-navy: #16335b;
+  --morgana-orange: #ea5d11;
+  --morgana-turquoise: #aeebe9;
+  --morgana-error: #d00;
+  font-family: Inter, sans-serif;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+* {
+  border: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--morgana-light-gray);
+  color: var(--morgana-dark-gray);
+  display: flex;
+  min-height: 100vh;
+  min-width: 280px;
+  place-items: center;
+  /* min-width: 320px; */
+}
+
+/* #app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+} */
+
+#simulator {
+  border: 1px solid mediumvioletred;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.simulator__logo {
+  background-color: var(--morgana-navy);
+}
+
+.logo {
+  height: 132px;
+  padding: 1.5rem;
+  transition: filter 300ms;
+  will-change: filter;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #ea5d11aa);
+}
+
+a {
+  font-weight: 500;
+  color: var(--morgana-orange);
+  text-decoration: inherit;
+}
+a:hover {
+  color: var(--morgana-orange);
+}
+
+.simulator__title {
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  text-align: start;
+}
+
+.simulator__description {
+  font-size: 1rem;
+  margin-bottom: 48px;
+  text-align: start;
+}
+
+.container {
+  border: 1px solid blueviolet;
+  padding: 8px;
+}
+
+.simulator__wrapper {
+  display: grid;
+  grid-template-areas:
+    'left'
+    'right';
+}
+
+.simulator__values {
+  border: 1px dotted dodgerblue;
+  grid-area: left;
+}
+
+.simulator__values__title {
+  background-color: var(--morgana-navy);
+  color: #fff;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 28px;
+  padding: 24px 80px;
+}
+
+.simulator__values__content {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  padding: 48px;
+}
+
+.price-range {
+  display: grid;
+  gap: 40px;
+  grid-template-columns: 115px 2fr;
+  width: 100%;
+}
+
+.price-range__label {
+}
+
+.price-range__tooltip {
+}
+
+.price-range__input-text {
+  background-color: #fff;
+  border: 1px solid #a4a4a4;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+  padding: 6px 12px;
+}
+
+.price-range__error {
+  color: #f00;
+  font-size: 10px;
+  line-height: 16px;
+  margin-bottom: 16px;
+}
+
+hr {
+  background-color: #d8d8d8;
+  height: 1px;
+  margin: 16px 0px;
+}
+
+.slide-container {
+  width: 100%;
+}
+
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  background: #d8d8d8;
+  border-radius: 5px;
+  height: 4px;
+  /* opacity: 0.7; */
+  outline: none;
+  transition: opacity 0.2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  background: var(--morgana-orange);
+  border-radius: 50%;
+  cursor: pointer;
+  height: 25px;
+  width: 25px;
+}
+
+.price-range,
+.credit-term {
+  display: flex;
+  justify-content: space-between;
+}
+
+.down-payment {
+  display: grid;
+}
+
+.simulator__conditions {
+  background-color: #fbfbfb;
+  border: 1px dashed darkorange;
+  grid-area: right;
+}
+
+.simulator__conditions__title {
+  background-color: var(--morgana-turquoise);
+  color: var(--morgana-navy);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 28px;
+  padding: 24px 80px;
+}
+
+.simulator__conditions__content {
+}
+
+@media (min-width: 992px) {
+  .simulator__wrapper {
+    grid-template-areas: 'left right';
+  }
+}
+
+.card {
+  background-color: var(--morgana-navy);
+  margin-top: 48px;
+  padding: 2em;
+}
+
+button {
+  background-color: var(--morgana-orange);
+  border: none;
+  border-radius: 25px;
+  color: #fff;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 24px;
+  margin-top: 48px;
+  min-width: 140px;
+  padding: 8px 20px;
+  width: 238px;
+  /* border: 1px solid transparent; */
+  /* transition: border-color 0.25s; */
+}
+button:hover {
+  text-decoration: underline;
+  /* border-color: #646cff; */
+}
+button:focus,
+button:focus-visible {
+  outline: none;
+  /* outline: 4px auto -webkit-focus-ring-color; */
+}
+
+/* @media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+} */

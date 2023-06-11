@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/morgana-icon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Morgana Challenge</title>
+  </head>
+  <body>
+    <div id="simulator">
+      <!-- <div class="simulator__logo">
+        <a href="https://morgana.mx" target="_blank">
+          <img src="/morgana-white.svg" class="logo" alt="Morgana logo" />
+        </a>
+      </div> -->
+      <p class="simulator__title">
+        Descubre cuánto pagarías al mes por vivir en tu casa ideal
+      </p>
+      <p class="simulator__description">
+        Juega con nuestro simulador y descubre al instante las condiciones que
+        necesitarías para conseguir tu mejor crédito hipotecario.
+      </p>
+      <div class="container simulator__wrapper">
+        <div class="simulator__values">
+          <div class="container simulator__values__title">
+            Simular mi crédito hipotecario
+          </div>
+          <div class="simulator__values__content">
+            <div class="price-range">
+              <div class="price-range__label">
+                <label>Precio del inmueble</label>
+                <div class="price-range__tooltip">
+                  <span>tooltip text</span>
+                </div>
+              </div>
+              <div>
+                <input
+                  id=""
+                  type="text"
+                  placeholder="$1,000,000"
+                  aria-describedby="precio del inmueble"
+                  class="price-range__input-text"
+                  onkeypress=""
+                />
+                <span>MXN</span>
+                <div>
+                  <p class="price-range__error">
+                    Costo total del inmueble. Monto mínimo del inmueble $500,000 MXN
+                  </p>
+                </div>
+              </div>
+            </div>
+            <hr />
+            <div class="down-payment">
+              <label>Enganche</label>
+              <div class="tooltip">
+                <span>tooltip text</span>
+              </div>
+              <div class="slide-container">
+                <input
+                  type="range"
+                  min="10"
+                  max="90"
+                  value="1"
+                  class="slider"
+                  id="myRange"
+                />
+              </div>
+              <span>MXN</span>
+            </div>
+            <hr />
+            <div class="credit-term">
+              <label>Plazo</label>
+              <div class="tooltip">
+                <span>tooltip text</span>
+              </div>
+              <span>años</span>
+            </div>
+          </div>
+        </div>
+        <div class="simulator__conditions">
+          <div class="container simulator__conditions__title">
+            Condiciones estimadas de tu crédito
+          </div>
+          <div class="simulator__conditions__content">
+            <div>
+              <label>Monto prestado:</label>
+              <div class="tooltip">
+                <span>tooltip text</span>
+              </div>
+              <span>$0 MXN</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="button">Estoy listo para cotizar</button>
+
+      <div class="card">
+        <button id="counter" type="button"></button>
+      </div>
+    </div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
