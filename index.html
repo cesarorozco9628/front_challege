@@ -8,7 +8,7 @@
   </head>
   <body>
     <main>
-      <div class="simulator__logo">
+      <div class="logo-container">
         <a href="https://morgana.mx" target="_blank">
           <img src="/morgana-white.svg" class="logo" alt="Morgana logo" />
         </a>
@@ -35,16 +35,18 @@
                     >
                   </div>
                 </div>
-                <div class="property-price-">
-                  <input
-                    id=""
-                    type="text"
-                    placeholder="$1,000,000"
-                    aria-describedby="precio del inmueble"
-                    class="property-price__input"
-                    onkeypress=""
-                  />
-                  <span>MXN</span>
+                <div>
+                  <div class="property-price__amount">
+                    <input
+                      id=""
+                      type="text"
+                      placeholder="$1,000,000"
+                      aria-describedby="precio del inmueble"
+                      class="morgana-input"
+                      onkeypress=""
+                    />
+                    <span>MXN</span>
+                  </div>
                   <div>
                     <p class="property-price__error">
                       Costo total del inmueble. Monto mínimo del inmueble $500,000 MXN
@@ -62,74 +64,126 @@
                     </span>
                   </div>
                 </div>
-                <div class="down-payment__instructions">
-                  Usa el deslizador para cambiar el porcentaje <br />
-                  de tu enganche
-                </div>
-                <div class="">
-                  <div class="down-payment__slider">
-                    <div class="slider-container">
-                      <input
-                        type="range"
-                        min="10"
-                        max="90"
-                        value="1"
-                        class="slider"
-                        id="myRange"
-                      />
+                <div class="dow-payment__controls">
+                  <div class="down-payment__instructions">
+                    Usa el deslizador para cambiar el porcentaje <br />
+                    de tu enganche
+                  </div>
+                  <div>
+                    <div class="down-payment__slider">
+                      <div class="slider-container">
+                        <input
+                          type="range"
+                          min="10"
+                          max="90"
+                          value="1"
+                          class="slider"
+                          id="down-payment__range"
+                        />
+                      </div>
+                      <span>10%</span>
                     </div>
-                    <span>10%</span>
-                  </div>
-
-                  <div class="slider-range">
-                    <span>10%</span>
-                    <span>90%</span>
-                  </div>
-                  <div class="">
-                    <input
-                      id=""
-                      type="text"
-                      placeholder="$1,000,000"
-                      class="property-price__input"
-                      onkeypress=""
-                    />
-                    <span>MXN</span>
+                    <div class="slider-range">
+                      <span>10%</span>
+                      <span>90%</span>
+                    </div>
                     <div>
-                      <p class="property-price__error">Error del slider</p>
+                      <input
+                        id=""
+                        type="text"
+                        placeholder="$1,000,000"
+                        class="morgana-input"
+                        onkeypress=""
+                      />
+                      <span>MXN</span>
+                      <div>
+                        <p class="down-payment__error">Error del slider</p>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
               <hr />
-              <div class="credit-term">
-                <label>Plazo</label>
-                <div class="credit-term__tooltip">
-                  <span>tooltip text</span>
+              <div class="credit-terms">
+                <div class="credit-terms__label">
+                  <label>Plazo</label>
+                  <div class="credit-terms__tooltip">
+                    <span>tooltip text</span>
+                  </div>
                 </div>
-                <span>años</span>
+                <div>
+                  <div class="credit-terms__slider">
+                    <div class="slider-container">
+                      <input
+                        type="range"
+                        min="5"
+                        max="20"
+                        value="5"
+                        class="slider"
+                        id="credit-terms__range"
+                      />
+                    </div>
+                    <span>10 años</span>
+                  </div>
+
+                  <div class="slider-range">
+                    <span>5</span>
+                    <span>10</span>
+                    <span>15</span>
+                    <span>20</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          <div class="simulator__conditions">
-            <div class="simulator__conditions__head">
+          <div class="simulator-conditions">
+            <div class="simulator-conditions__head">
               Condiciones estimadas de tu crédito
             </div>
-            <div class="simulator__conditions__content">
-              <div>
-                <label>Monto prestado:</label>
-                <div class="tooltip">
-                  <span>tooltip text</span>
+            <div class="simulator-conditions__content">
+              <!-- <div> -->
+              <div class="simulator-conditions__element">
+                <div class="credit-amount__label">
+                  <label>Monto prestado:</label>
+                  <div class="credit-amount__tooltip">
+                    <span>tooltip text</span>
+                  </div>
                 </div>
-                <span>$0 MXN</span>
+                <div>450,000 MXN</div>
               </div>
+              <div class="simulator-conditions__element">
+                <div class="monthly-payment__label">
+                  <label>Pago mensual:</label>
+                  <div class="monthly-payment__tooltip">
+                    <span>tooltip text</span>
+                  </div>
+                </div>
+                <div>$6,394 MXN *</div>
+              </div>
+              <div class="simulator-conditions__element">
+                <div class="interest-rate__label">
+                  <label>Tasa:</label>
+                  <div class="interest-rate__tooltip">
+                    <span>tooltip text</span>
+                  </div>
+                </div>
+                <div>10.5%</div>
+              </div>
+              <hr />
+              <p class="simulator-conditions__footer">
+                * Los valores mostrados son un estimado
+              </p>
+              <!-- </div> -->
             </div>
           </div>
         </div>
-        <button class="button">Estoy listo para cotizar</button>
-
-        <!-- <div class="card"> -->
-        <button id="counter" type="button"></button>
-        <!-- </div> -->
+        <div class="button-wrapper">
+          <button class="button">Estoy listo para cotizar</button>
+        </div>
+        <br />
+        <div class="button-wrapper">
+          <button id="counter" type="button"></button>
+        </div>
       </section>
     </main>
     <script type="module" src="/main.js"></script>

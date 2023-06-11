@@ -26,10 +26,6 @@ body {
   color: var(--morgana-dark-gray);
   line-height: 1.5;
   min-height: 100vh;
-  /* min-width: 280px; */
-  /* min-width: 320px; */
-  /* display: flex; */
-  /* place-items: center; */
 }
 
 main {
@@ -41,14 +37,7 @@ main {
   width: 100%;
 }
 
-section {
-  /* max-width: 80%; */
-  max-width: 100%;
-  padding: 48px 32px;
-  width: 100%;
-}
-
-.simulator__logo {
+.logo-container {
   background-color: var(--morgana-navy);
   text-align: center;
   width: 100%;
@@ -71,6 +60,12 @@ a {
 }
 a:hover {
   color: var(--morgana-orange);
+}
+
+section {
+  max-width: 100%;
+  padding: 48px 32px;
+  width: 100%;
 }
 
 .simulator__title {
@@ -120,23 +115,29 @@ a:hover {
 
 .property-price,
 .down-payment,
-.credit-term {
+.credit-terms {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
 
-.property-price__label {
+.property-price__label,
+.down-payment__label,
+.credit-terms__label {
   margin-bottom: 12px;
 }
 
 .property-price__tooltip,
 .down-payment__tooltip,
-.credit-term__tooltip {
+.credit-terms__tooltip {
   font-size: 9px;
 }
 
-.property-price__input {
+.property-price__amount {
+  width: 100%;
+}
+
+.morgana-input {
   background-color: #fff;
   border: 1px solid #a4a4a4;
   border-radius: 100px;
@@ -146,13 +147,19 @@ a:hover {
   margin-right: 8px;
   outline: none;
   padding: 6px 12px;
+  width: 75%;
 }
 
-.property-price__input:focus {
+.morgana-input:focus {
   border: 1px solid #aad3f9;
 }
 
-.property-price__error {
+.property-price__amount > span {
+  width: 20%;
+}
+
+.property-price__error,
+.down-payment__error {
   color: #f00;
   font-size: 10px;
   line-height: 16px;
@@ -165,18 +172,15 @@ hr {
   margin: 16px 0px;
 }
 
-.down-payment__slider {
+.down-payment__slider,
+.credit-terms__slider {
   display: flex;
   width: 100%;
 }
 
 .slider-container {
-  margin-right: 8px;
-  width: 90%;
-}
-
-.slider-container > span {
-  width: 10%;
+  margin-right: 12px;
+  width: 75%;
 }
 
 .slider {
@@ -208,31 +212,25 @@ hr {
   display: flex;
   font-size: 8px;
   justify-content: space-between;
-  margin-top: 8px;
-  width: 83%;
+  margin: 8px 0 24px 0;
+  width: 75%;
 }
 
-.property-price,
-.credit-term {
-  display: flex;
-  justify-content: space-between;
-}
-
-.down-payment {
-  display: grid;
+.slider-range:last-child {
+  margin-bottom: 0;
 }
 
 .down-payment__instructions {
   font-size: 8px;
 }
 
-.simulator__conditions {
+.simulator-conditions {
   background-color: #fbfbfb;
   border: 1px dashed darkorange;
   grid-area: right;
 }
 
-.simulator__conditions__head {
+.simulator-conditions__head {
   background-color: var(--morgana-turquoise);
   color: var(--morgana-navy);
   font-size: 20px;
@@ -242,8 +240,39 @@ hr {
   text-align: start;
 }
 
-.simulator__conditions__content {
+.simulator-conditions__content {
+  font-size: 14px;
   padding: 24px;
+}
+
+.simulator-conditions__element {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1;
+  margin-bottom: 24px;
+}
+
+.simulator-conditions__element > div:last-child {
+  justify-self: end;
+  font-weight: 600;
+}
+
+.monthly-payment__label:first-of-type + div,
+.interest-rate__label:first-of-type + div {
+  font-size: 16px;
+}
+
+.simulator-conditions__footer {
+  font-size: 16px;
+  line-height: 16px;
+  margin-top: 32px;
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 button {
@@ -275,7 +304,7 @@ button:focus-visible {
 @media (min-width: 992px) {
   section {
     max-width: 1280px;
-    width: 80%;
+    width: 75%;
   }
 
   .simulator__title {
@@ -284,6 +313,7 @@ button:focus-visible {
 
   .simulator__wrapper {
     grid-template-areas: 'left right';
+    grid-template-columns: 1fr 1fr;
   }
 
   .simulator__values__head {
@@ -292,25 +322,57 @@ button:focus-visible {
     padding: 24px 80px;
   }
 
-  .property-price {
-    flex-direction: row;
-    gap: 40px;
-    justify-content: space-between;
+  .property-price,
+  .down-payment,
+  .credit-terms {
+    display: grid;
+    gap: 32px;
+    grid-template-columns: 1fr 3fr;
+  }
+
+  .credit-terms {
+    margin-top: 32px;
+  }
+
+  .down-payment__label {
+    grid-column-start: 1;
+  }
+
+  .down-payment__controls {
+    grid-column-start: 2;
   }
 
   .property-price__label,
-  .property-price__error {
+  .property-price__error,
+  .down-payment__label,
+  .down-payment__error,
+  .credit-terms__label {
     margin-bottom: 0;
   }
 
-  .simulator__conditions__head {
+  .morgana-input,
+  .slider-container,
+  .slider-range {
+    width: 70%;
+  }
+
+  .simulator-conditions__head {
     font-size: 24px;
     line-height: 28px;
     padding: 24px 48px;
   }
 
-  .simulator__values__content,
-  .simulator__conditions__content {
+  .simulator-conditions__content {
+    padding: 48px;
+  }
+
+  .simulator-conditions__element:last-of-type {
+    margin-bottom: 48px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .simulator__values__content {
     padding: 48px;
   }
 }
