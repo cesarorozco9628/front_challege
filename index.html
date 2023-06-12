@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/morgana-icon.svg" />
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="/src/styles/index.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Morgana Challenge</title>
   </head>
@@ -25,24 +25,23 @@
         </p>
 
         <div class="simulator__wrapper">
+          <!-- Simulator values -->
           <div class="simulator-values">
             <div class="simulator-values__head">Simular mi crédito hipotecario</div>
             <div class="simulator-values__content">
               <div class="property-price">
-                <!-- <div > -->
-                <label class="property-price__label">
-                  Precio del inmueble
-                  <!-- <div class="property-price__tooltip"> -->
-                  <span
-                    class="tooltip"
-                    data-text="Costo total del inmueble. Monto mínimo del inmueble $500,000
+                <div class="property-price__label">
+                  <label>Precio del inmueble</label>
+                  <div class="property-price__tooltip">
+                    <span
+                      class="tooltip"
+                      data-text="Costo total del inmueble. Monto mínimo del inmueble $500,000
                       MXN."
-                  >
-                    <img src="/public/info-icon.svg" />
-                  </span>
-                  <!-- </div> -->
-                </label>
-                <!-- </div> -->
+                    >
+                      <img src="/public/info-icon.svg" />
+                    </span>
+                  </div>
+                </div>
                 <div>
                   <div class="property-price__amount">
                     <input
@@ -154,6 +153,7 @@
               </div>
             </div>
           </div>
+          <!-- Credit conditions -->
           <div class="simulator-conditions">
             <div class="simulator-conditions__head">
               Condiciones estimadas de tu crédito
@@ -210,15 +210,12 @@
             </div>
           </div>
         </div>
+
         <div class="button-wrapper">
-          <button class="button">Estoy listo para cotizar</button>
-        </div>
-        <br />
-        <div class="button-wrapper">
-          <button id="counter" type="button"></button>
+          <a class="button" href="/src/confirmation.html"> Estoy listo para cotizar </a>
         </div>
       </section>
     </main>
-    <script type="module" src="/main.js"></script>
+    <script type="module" src="/src/main.js"></script>
   </body>
 </html>

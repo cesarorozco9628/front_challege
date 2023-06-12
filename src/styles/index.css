@@ -1,3 +1,5 @@
+@import './confirmation.css';
+
 :root {
   --morgana-light-gray: #f5f5f5;
   --morgana-dark-gray: #555;
@@ -312,7 +314,7 @@ hr {
   width: 100%;
 }
 
-button {
+.button {
   background-color: var(--morgana-orange);
   border: none;
   border-radius: 25px;
@@ -326,13 +328,17 @@ button {
   margin-top: 48px;
   min-width: 140px;
   padding: 8px 20px;
+  text-align: center;
   width: 238px;
 }
-button:hover {
+
+.button:hover {
+  color: #fff;
   text-decoration: underline;
 }
-button:focus,
-button:focus-visible {
+
+.button:focus,
+.button:focus-visible {
   outline: none;
 }
 
