@@ -8,7 +8,7 @@ _Morgana-front-challenge project was created with vanilla Javascript, HTML and C
 Follow this [link to the project deployment](https://morgana.purplerose.dev/).
 
 
-## Starting 🚀
+## Starting 🏁
 These instructions will allow you to obtain a copy of the project on your local machine.
 
 ### Pre-requirements 📋
