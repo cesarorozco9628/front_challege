@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/morgana-icon.svg" />
+    <link rel="stylesheet" href="./style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Morgana Challenge</title>
   </head>
@@ -28,32 +29,33 @@
             <div class="simulator-values__head">Simular mi crédito hipotecario</div>
             <div class="simulator-values__content">
               <div class="property-price">
-                <div class="property-price__label">
-                  <label>Precio del inmueble</label>
-                  <div class="property-price__tooltip">
-                    <span
-                      class="tooltip"
-                      data-text="Costo total del inmueble. Monto mínimo del inmueble $500,000
-                    MXN."
-                    >
-                      Tooltip
-                    </span>
-                  </div>
-                </div>
+                <!-- <div > -->
+                <label class="property-price__label">
+                  Precio del inmueble
+                  <!-- <div class="property-price__tooltip"> -->
+                  <span
+                    class="tooltip"
+                    data-text="Costo total del inmueble. Monto mínimo del inmueble $500,000
+                      MXN."
+                  >
+                    <img src="/public/info-icon.svg" />
+                  </span>
+                  <!-- </div> -->
+                </label>
+                <!-- </div> -->
                 <div>
                   <div class="property-price__amount">
                     <input
-                      id=""
-                      type="text"
+                      id="property-price"
+                      type=""
                       placeholder="$1,000,000"
                       aria-describedby="precio del inmueble"
                       class="morgana-input"
-                      onkeypress=""
                     />
                     <span>MXN</span>
                   </div>
                   <div>
-                    <p class="property-price__error">
+                    <p id="property-price__error" class="property-price__error hidden">
                       Costo total del inmueble. Monto mínimo del inmueble $500,000 MXN
                     </p>
                   </div>
@@ -64,8 +66,11 @@
                 <div class="down-payment__label">
                   <label>Enganche</label>
                   <div class="down-payment__tooltip">
-                    <span>
-                      Monto inicial que puedes aportar para comprar tu propiedad.
+                    <span
+                      class="tooltip"
+                      data-text="Monto inicial que puedes aportar para comprar tu propiedad."
+                    >
+                      <img src="/public/info-icon.svg" />
                     </span>
                   </div>
                 </div>
@@ -86,7 +91,7 @@
                           id="down-payment__range"
                         />
                       </div>
-                      <span>10%</span>
+                      <span id="down-payment__rate">10%</span>
                     </div>
                     <div class="slider-range">
                       <span>10%</span>
@@ -94,42 +99,49 @@
                     </div>
                     <div>
                       <input
-                        id=""
-                        type="text"
+                        id="down-payment"
+                        type=""
                         placeholder="$1,000,000"
+                        aria-describedby="enganche del inmueble"
                         class="morgana-input"
-                        onkeypress=""
                       />
                       <span>MXN</span>
                       <div>
-                        <p class="down-payment__error">Error del slider</p>
+                        <p id="down-payment__error" class="down-payment__error hidden">
+                          El enganche no puede ser menor a 10%
+                        </p>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
               <hr />
-              <div class="credit-terms">
-                <div class="credit-terms__label">
+              <div class="loan-term">
+                <div class="loan-term__label">
                   <label>Plazo</label>
-                  <div class="credit-terms__tooltip">
-                    <span>tooltip text</span>
+                  <div class="loan-term__tooltip">
+                    <span
+                      class="tooltip"
+                      data-text="Años en los que quieres pagar tu crédito."
+                    >
+                      <img src="/public/info-icon.svg" />
+                    </span>
                   </div>
                 </div>
                 <div>
-                  <div class="credit-terms__slider">
+                  <div class="loan-term__slider">
                     <div class="slider-container">
                       <input
                         type="range"
                         min="5"
                         max="20"
-                        value="5"
+                        value="15"
                         step="5"
                         class="slider"
-                        id="credit-terms__range"
+                        id="loan-term__range"
                       />
                     </div>
-                    <span>10 años</span>
+                    <span id="loan-term__chosen">15 años</span>
                   </div>
 
                   <div class="slider-range">
@@ -152,28 +164,43 @@
                 <div class="credit-amount__label">
                   <label>Monto prestado:</label>
                   <div class="credit-amount__tooltip">
-                    <span>tooltip text</span>
+                    <span
+                      class="tooltip"
+                      data-text="Monto final del préstamo solicitado."
+                    >
+                      <img src="/public/info-icon.svg" />
+                    </span>
                   </div>
                 </div>
-                <div>450,000 MXN</div>
+                <div id="credit-amount">$0 MXN</div>
               </div>
               <div class="simulator-conditions__element">
                 <div class="monthly-payment__label">
                   <label>Pago mensual:</label>
                   <div class="monthly-payment__tooltip">
-                    <span>tooltip text</span>
+                    <span
+                      class="tooltip"
+                      data-text="Inversión mensual que deberás pagar."
+                    >
+                      <img src="/public/info-icon.svg" />
+                    </span>
                   </div>
                 </div>
-                <div>$6,394 MXN *</div>
+                <div id="monthly-payment">$0 MXN *</div>
               </div>
               <div class="simulator-conditions__element">
                 <div class="interest-rate__label">
                   <label>Tasa:</label>
                   <div class="interest-rate__tooltip">
-                    <span>tooltip text</span>
+                    <span
+                      class="tooltip"
+                      data-text="Porcentaje que cobran las instituciones por el dinero prestado."
+                    >
+                      <img src="/public/info-icon.svg" />
+                    </span>
                   </div>
                 </div>
-                <div>10.5%</div>
+                <div id="interest-rate">10.5%</div>
               </div>
               <hr />
               <p class="simulator-conditions__footer">

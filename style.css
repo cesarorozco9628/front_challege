@@ -62,6 +62,10 @@ a:hover {
   color: var(--morgana-orange);
 }
 
+.hidden {
+  display: none;
+}
+
 section {
   max-width: 100%;
   padding: 48px 32px;
@@ -116,7 +120,7 @@ section {
 
 .property-price,
 .down-payment,
-.credit-terms {
+.loan-term {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -124,46 +128,45 @@ section {
 
 .property-price__label,
 .down-payment__label,
-.credit-terms__label {
+.loan-term__label,
+.credit-amount__label,
+.monthly-payment__label,
+.interest-rate__label {
+  display: inline-flex;
   margin-bottom: 12px;
-}
-
-.property-price__tooltip,
-.down-payment__tooltip,
-.credit-terms__tooltip {
-  font-size: 11px; /* TODO: Revisar tamaño correcto */
+  vertical-align: middle;
 }
 
 .tooltip {
-  position: relative; /* making the .tooltip span a container for the tooltip text */
-  border-bottom: 1px dashed #000; /* little indicater to indicate it's hoverable */
+  position: relative;
+  margin-left: 4px;
 }
 
 .tooltip:before {
-  content: attr(data-text); /* here's the magic */
-  position: absolute;
-
-  /* vertically center */
-  top: 50%;
-  transform: translateY(-50%);
-
-  /* move to right */
-  left: 100%;
-  margin-left: 15px; /* and add a small left margin */
-
-  /* basic styles */
-  width: 190px;
-  padding: 10px;
-  border-radius: 10px;
   background: var(--morgana-light-gray);
-  color: var(#000);
-  text-align: center;
+  border-radius: 10px;
+  color: #555;
+  content: attr(data-text);
+  display: none;
   font-size: 14px;
-  display: none; /* hide by default */
+  left: -500%;
+  padding: 4px 8px;
+  position: absolute;
+  text-align: center;
+  top: -100%;
+  transform: translateY(-88%);
+  width: 200px;
+  z-index: 10;
 }
 
 .tooltip:hover:before {
   display: block;
+}
+
+.tooltip > img {
+  height: 15px;
+  vertical-align: middle;
+  width: 15px;
 }
 
 .property-price__amount {
@@ -206,7 +209,7 @@ hr {
 }
 
 .down-payment__slider,
-.credit-terms__slider {
+.loan-term__slider {
   display: flex;
   width: 100%;
 }
@@ -288,8 +291,8 @@ hr {
 }
 
 .simulator-conditions__element > div:last-child {
-  justify-self: end;
   font-weight: 600;
+  justify-self: end;
 }
 
 .monthly-payment__label:first-of-type + div,
@@ -347,7 +350,7 @@ button:focus-visible {
 @media (min-width: 992px) {
   section {
     max-width: 1280px;
-    width: 75%;
+    width: 80%;
   }
 
   .simulator__title {
@@ -367,13 +370,13 @@ button:focus-visible {
 
   .property-price,
   .down-payment,
-  .credit-terms {
+  .loan-term {
     display: grid;
-    gap: 32px;
+    gap: 28px;
     grid-template-columns: 1fr 3fr;
   }
 
-  .credit-terms {
+  .loan-term {
     margin-top: 32px;
   }
 
@@ -389,7 +392,7 @@ button:focus-visible {
   .property-price__error,
   .down-payment__label,
   .down-payment__error,
-  .credit-terms__label {
+  .loan-term__label {
     margin-bottom: 0;
   }
 
