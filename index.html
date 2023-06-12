@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/morgana-icon.svg" />
+    <link rel="stylesheet" href="/src/styles/index.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Morgana Challenge</title>
+  </head>
+  <body>
+    <main>
+      <div class="logo-container">
+        <a href="https://morgana.mx" target="_blank">
+          <img src="/morgana-white.svg" class="logo" alt="Morgana logo" />
+        </a>
+      </div>
+
+      <section id="simulator">
+        <p class="simulator__title">
+          Descubre cuánto pagarías al mes por vivir en tu casa ideal
+        </p>
+        <p class="simulator__description">
+          Juega con nuestro simulador y descubre al instante las condiciones que
+          necesitarías para conseguir tu mejor crédito hipotecario.
+        </p>
+
+        <div class="simulator__wrapper">
+          <!-- Simulator values -->
+          <div class="simulator-values">
+            <div class="simulator-values__head">Simular mi crédito hipotecario</div>
+            <div class="simulator-values__content">
+              <div class="property-price">
+                <div class="property-price__label">
+                  <label>Precio del inmueble</label>
+                  <div class="property-price__tooltip">
+                    <span
+                      class="tooltip"
+                      data-text="Costo total del inmueble. Monto mínimo del inmueble $500,000
+                      MXN."
+                    >
+                      <img src="/public/info-icon.svg" />
+                    </span>
+                  </div>
+                </div>
+                <div>
+                  <div class="property-price__amount">
+                    <input
+                      id="property-price"
+                      type=""
+                      placeholder="$1,000,000"
+                      aria-describedby="precio del inmueble"
+                      class="morgana-input"
+                    />
+                    <span>MXN</span>
+                  </div>
+                  <div>
+                    <p id="property-price__error" class="property-price__error hidden">
+                      Costo total del inmueble. Monto mínimo del inmueble $500,000 MXN
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="down-payment">
+                <div class="down-payment__label">
+                  <label>Enganche</label>
+                  <div class="down-payment__tooltip">
+                    <span
+                      class="tooltip"
+                      data-text="Monto inicial que puedes aportar para comprar tu propiedad."
+                    >
+                      <img src="/public/info-icon.svg" />
+                    </span>
+                  </div>
+                </div>
+                <div class="dow-payment__controls">
+                  <div class="down-payment__instructions">
+                    Usa el deslizador para cambiar el porcentaje <br />
+                    de tu enganche
+                  </div>
+                  <div>
+                    <div class="down-payment__slider">
+                      <div class="slider-container">
+                        <input
+                          type="range"
+                          min="10"
+                          max="90"
+                          value="1"
+                          class="slider"
+                          id="down-payment__range"
+                        />
+                      </div>
+                      <span id="down-payment__rate">10%</span>
+                    </div>
+                    <div class="slider-range">
+                      <span>10%</span>
+                      <span>90%</span>
+                    </div>
+                    <div>
+                      <input
+                        id="down-payment"
+                        type=""
+                        placeholder="$1,000,000"
+                        aria-describedby="enganche del inmueble"
+                        class="morgana-input"
+                      />
+                      <span>MXN</span>
+                      <div>
+                        <p id="down-payment__error" class="down-payment__error hidden">
+                          El enganche no puede ser menor a 10%
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="loan-term">
+                <div class="loan-term__label">
+                  <label>Plazo</label>
+                  <div class="loan-term__tooltip">
+                    <span
+                      class="tooltip"
+                      data-text="Años en los que quieres pagar tu crédito."
+                    >
+                      <img src="/public/info-icon.svg" />
+                    </span>
+                  </div>
+                </div>
+                <div>
+                  <div class="loan-term__slider">
+                    <div class="slider-container">
+                      <input
+                        type="range"
+                        min="5"
+                        max="20"
+                        value="15"
+                        step="5"
+                        class="slider"
+                        id="loan-term__range"
+                      />
+                    </div>
+                    <span id="loan-term__chosen">15 años</span>
+                  </div>
+
+                  <div class="slider-range">
+                    <span>5</span>
+                    <span>10</span>
+                    <span>15</span>
+                    <span>20</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Credit conditions -->
+          <div class="simulator-conditions">
+            <div class="simulator-conditions__head">
+              Condiciones estimadas de tu crédito
+            </div>
+            <div class="simulator-conditions__content">
+              <!-- <div> -->
+              <div class="simulator-conditions__element">
+                <div class="credit-amount__label">
+                  <label>Monto prestado:</label>
+                  <div class="credit-amount__tooltip">
+                    <span
+                      class="tooltip"
+                      data-text="Monto final del préstamo solicitado."
+                    >
+                      <img src="/public/info-icon.svg" />
+                    </span>
+                  </div>
+                </div>
+                <div id="credit-amount">$0 MXN</div>
+              </div>
+              <div class="simulator-conditions__element">
+                <div class="monthly-payment__label">
+                  <label>Pago mensual:</label>
+                  <div class="monthly-payment__tooltip">
+                    <span
+                      class="tooltip"
+                      data-text="Inversión mensual que deberás pagar."
+                    >
+                      <img src="/public/info-icon.svg" />
+                    </span>
+                  </div>
+                </div>
+                <div id="monthly-payment">$0 MXN *</div>
+              </div>
+              <div class="simulator-conditions__element">
+                <div class="interest-rate__label">
+                  <label>Tasa:</label>
+                  <div class="interest-rate__tooltip">
+                    <span
+                      class="tooltip"
+                      data-text="Porcentaje que cobran las instituciones por el dinero prestado."
+                    >
+                      <img src="/public/info-icon.svg" />
+                    </span>
+                  </div>
+                </div>
+                <div id="interest-rate">10.5%</div>
+              </div>
+              <hr />
+              <p class="simulator-conditions__footer">
+                * Los valores mostrados son un estimado
+              </p>
+              <!-- </div> -->
+            </div>
+          </div>
+        </div>
+
+        <div class="button-wrapper">
+          <a class="button" href="/src/confirmation.html"> Estoy listo para cotizar </a>
+        </div>
+      </section>
+    </main>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

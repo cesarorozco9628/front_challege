@@ -1,0 +1,436 @@
+@import './confirmation.css';
+
+:root {
+  --morgana-light-gray: #f5f5f5;
+  --morgana-dark-gray: #555;
+  --morgana-navy: #16335b;
+  --morgana-orange: #ea5d11;
+  --morgana-turquoise: #aeebe9;
+  --morgana-error: #d00;
+  font-family: Inter, sans-serif;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+* {
+  border: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--morgana-light-gray);
+  color: var(--morgana-dark-gray);
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.logo-container {
+  background-color: var(--morgana-navy);
+  text-align: center;
+  width: 100%;
+}
+
+.logo {
+  height: 98px;
+  padding: 1.5rem 0;
+  transition: filter 300ms;
+  will-change: filter;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #ea5d11aa);
+}
+
+a {
+  font-weight: 500;
+  color: var(--morgana-orange);
+  text-decoration: inherit;
+}
+a:hover {
+  color: var(--morgana-orange);
+}
+
+.hidden {
+  display: none;
+}
+
+section {
+  max-width: 100%;
+  padding: 48px 32px;
+  width: 100%;
+}
+
+.simulator__title {
+  color: var(--morgana-navy);
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  text-align: start;
+}
+
+.simulator__description {
+  font-size: 1rem;
+  margin-bottom: 48px;
+  text-align: start;
+}
+
+.simulator__wrapper {
+  display: grid;
+  grid-template-areas:
+    'left'
+    'right';
+  width: 100%;
+}
+
+.simulator-values {
+  grid-area: left;
+}
+
+.simulator-values__head {
+  background-color: var(--morgana-navy);
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  padding: 24px 48px;
+  text-align: start;
+  -webkit-clip-path: polygon(45px 0, 100% 0, 100% 100%, 0 100%, 0 45px);
+  clip-path: polygon(45px 0, 100% 0, 100% 100%, 0 100%, 0 45px);
+}
+
+.simulator-values__content {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  padding: 24px;
+}
+
+.property-price,
+.down-payment,
+.loan-term {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.property-price__label,
+.down-payment__label,
+.loan-term__label,
+.credit-amount__label,
+.monthly-payment__label,
+.interest-rate__label {
+  display: inline-flex;
+  margin-bottom: 12px;
+  vertical-align: middle;
+}
+
+.tooltip {
+  position: relative;
+  margin-left: 4px;
+}
+
+.tooltip:before {
+  background: var(--morgana-light-gray);
+  border-radius: 10px;
+  color: #555;
+  content: attr(data-text);
+  display: none;
+  font-size: 14px;
+  left: -500%;
+  padding: 4px 8px;
+  position: absolute;
+  text-align: center;
+  top: -100%;
+  transform: translateY(-88%);
+  width: 200px;
+  z-index: 10;
+}
+
+.tooltip:hover:before {
+  display: block;
+}
+
+.tooltip > img {
+  height: 15px;
+  vertical-align: middle;
+  width: 15px;
+}
+
+.property-price__amount {
+  width: 100%;
+}
+
+.morgana-input {
+  background-color: #fff;
+  border: 1px solid #a4a4a4;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+  margin-right: 8px;
+  outline: none;
+  padding: 6px 12px;
+  width: 75%;
+}
+
+.morgana-input:focus {
+  border: 1px solid #aad3f9;
+}
+
+.property-price__amount > span {
+  width: 20%;
+}
+
+.property-price__error,
+.down-payment__error {
+  color: #f00;
+  font-size: 10px;
+  line-height: 16px;
+  margin-bottom: 16px;
+}
+
+hr {
+  background-color: #d8d8d8;
+  height: 1px;
+  margin: 16px 0px;
+}
+
+.down-payment__slider,
+.loan-term__slider {
+  display: flex;
+  width: 100%;
+}
+
+.slider-container {
+  margin-right: 12px;
+  width: 75%;
+}
+
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  background: #d8d8d8;
+  border-radius: 5px;
+  height: 4px;
+  outline: none;
+  transition: opacity 0.2s;
+  width: 100%;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  background: var(--morgana-orange);
+  border-radius: 50%;
+  cursor: pointer;
+  height: 25px;
+  width: 25px;
+}
+
+.slider-range {
+  display: flex;
+  font-size: 8px;
+  justify-content: space-between;
+  margin: 8px 0 24px 0;
+  width: 75%;
+}
+
+.slider-range:last-child {
+  margin-bottom: 0;
+}
+
+.down-payment__instructions {
+  font-size: 8px;
+}
+
+.simulator-conditions {
+  background-color: #fbfbfb;
+  font-size: 14px;
+  grid-area: right;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 85% 100%, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 85% 100%, 0 100%);
+}
+
+.simulator-conditions__head {
+  background-color: var(--morgana-turquoise);
+  color: var(--morgana-navy);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  padding: 24px;
+  text-align: start;
+}
+
+.simulator-conditions__content {
+  padding: 24px;
+}
+
+.simulator-conditions__element {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1;
+  margin-bottom: 24px;
+}
+
+.simulator-conditions__element > div:last-child {
+  font-weight: 600;
+  justify-self: end;
+}
+
+.monthly-payment__label:first-of-type + div,
+.interest-rate__label:first-of-type + div {
+  font-size: 16px;
+}
+
+.simulator-conditions__footer {
+  font-size: 10px;
+  line-height: 16px;
+  margin: 32px 0 16px 0;
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.button {
+  background-color: var(--morgana-orange);
+  border: none;
+  border-radius: 25px;
+  color: #fff;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 24px;
+  margin-top: 48px;
+  min-width: 140px;
+  padding: 8px 20px;
+  text-align: center;
+  width: 238px;
+}
+
+.button:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.button:focus,
+.button:focus-visible {
+  outline: none;
+}
+
+/* Tablet styles */
+
+@media (min-width: 768px) {
+  section {
+    max-width: 720px;
+    width: 70%;
+  }
+}
+
+/* Desktop styles */
+
+@media (min-width: 992px) {
+  section {
+    max-width: 1280px;
+    width: 80%;
+  }
+
+  .simulator__title {
+    font-size: 24px;
+  }
+
+  .simulator__wrapper {
+    grid-template-areas: 'left right';
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .simulator-values__head {
+    font-size: 24px;
+    line-height: 28px;
+    padding: 24px 80px;
+  }
+
+  .property-price,
+  .down-payment,
+  .loan-term {
+    display: grid;
+    gap: 28px;
+    grid-template-columns: 1fr 3fr;
+  }
+
+  .loan-term {
+    margin-top: 32px;
+  }
+
+  .down-payment__label {
+    grid-column-start: 1;
+  }
+
+  .down-payment__controls {
+    grid-column-start: 2;
+  }
+
+  .property-price__label,
+  .property-price__error,
+  .down-payment__label,
+  .down-payment__error,
+  .loan-term__label {
+    margin-bottom: 0;
+  }
+
+  .morgana-input,
+  .slider-container,
+  .slider-range {
+    width: 70%;
+  }
+
+  .simulator-conditions__head {
+    font-size: 24px;
+    line-height: 28px;
+    padding: 24px 48px;
+  }
+
+  .simulator-conditions__content {
+    padding: 48px;
+  }
+
+  .simulator-conditions__element:last-of-type {
+    margin-bottom: 48px;
+  }
+
+  .simulator-conditions__footer {
+    font-size: 16px;
+  }
+}
+
+/* Large Desktop styles */
+
+@media (min-width: 1200px) {
+  .simulator-values__content {
+    padding: 48px;
+  }
+}
