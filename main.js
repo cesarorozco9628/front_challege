@@ -1,26 +1,166 @@
-import './style.css'
-import javascriptLogo from './javascript.svg'
-import morganaLogo from '/morgana-white.svg'
-import { setupCounter } from './counter.js'
+const MONTHLY_RATE = 0.0098
+const MINIMUM_PROPERTY_PRICE = 500000
+const MINIMIM_DOWN_PAYMENT_RATE = 10
 
-// document.querySelector('#app').innerHTML = `
-// <h1>Descubre cuánto pagarías al mes por vivir en tu casa ideal</h1>
-// <p>Juega con nuestro simulador y descubre al instante las condiciones que necesitarías para conseguir tu mejor crédito hipotecario.</p>
-//   <div class="container">
-//     <a href="https://vitejs.dev" target="_blank">
-//       <img src="${morganaLogo}" class="logo" alt="Morgana logo" />
-//     </a>
-//     <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-//       <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-//     </a>
-//     <h1>Hello Morganers!</h1>
-//     <div class="card">
-//       <button id="counter" type="button"></button>
-//     </div>
-//     <p class="read-the-docs">
-//       Click on the Vite logo to learn more
-//     </p>
-//   </div>
-// `
+// DOM ELEMENTS
 
-setupCounter(document.querySelector('#counter'))
+const $propertyPriceInput = document.getElementById('property-price')
+const $downPaymentInput = document.getElementById('down-payment')
+const $downPaymentRateInput = document.getElementById('down-payment__range')
+const $downPaymentRateLabel = document.getElementById('down-payment__rate')
+const $loanTermInput = document.getElementById('loan-term__range')
+const $loanTermLabel = document.getElementById('loan-term__chosen')
+const $creditAmountLabel = document.getElementById('credit-amount')
+const $monthlyPaymentLabel = document.getElementById('monthly-payment')
+const $propertyPriceError = document.getElementById('property-price__error')
+const $downPaymentError = document.getElementById('down-payment__error')
+
+// EVENT LISTENERS REGISTRY
+
+$propertyPriceInput.addEventListener('keyup', onInputPriceChange)
+$downPaymentRateInput.addEventListener('input', onDownPaymentRateChange)
+$downPaymentInput.addEventListener('keyup', onDownPaymentInputChange)
+$loanTermInput.addEventListener('input', onLoanTermChange)
+
+// UTILITIES
+
+function valueToNumber(stringValue) {
+  return stringValue === '' ? 0 : parseInt(stringValue.replace(/[^0-9]/g, ''))
+}
+
+function format(value) {
+  const formatOptions = {
+    style: 'decimal',
+    currency: 'MXN',
+    groupingSeparator: ',',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  }
+
+  return value.toLocaleString('es-MX', formatOptions)
+}
+
+// GETTERS
+
+function getPropertyPrice() {
+  return valueToNumber($propertyPriceInput.value)
+}
+
+function getCreditAmount() {
+  const propertyPrice = getPropertyPrice()
+  const downPaymentValue = getDownPaymentAmount()
+
+  return propertyPrice - downPaymentValue
+}
+
+function getDownPaymentAmount() {
+  const propertyPrice = getPropertyPrice()
+  const rate = valueToNumber($downPaymentRateInput.value) / 100
+
+  return propertyPrice * rate
+}
+
+function getLoanTermInMonths() {
+  return valueToNumber($loanTermInput.value) * 12
+}
+
+function getMonthlyPayment() {
+  const creditAmount = getCreditAmount()
+  const loanTermInMonths = getLoanTermInMonths()
+
+  return (
+    (creditAmount * MONTHLY_RATE) / (1 - Math.pow(1 + MONTHLY_RATE, -loanTermInMonths))
+  )
+}
+
+// UI UPDATERS
+
+function updateCreditAmount(amount) {
+  const creditAmount = amount ? amount : getCreditAmount()
+  $creditAmountLabel.textContent = `$${format(creditAmount)} MXN`
+}
+
+function updateDownPayment() {
+  const downPayment = getDownPaymentAmount()
+  $downPaymentInput.value = format(Math.floor(downPayment))
+}
+
+function updateDownPaymentRateLabel() {
+  $downPaymentRateLabel.textContent = $downPaymentRateInput.value + '%'
+}
+
+function updateOnLoanTermChange() {
+  $loanTermLabel.textContent = $loanTermInput.value + ' años'
+}
+
+function updatePropertyPriceInput() {
+  const propertyPrice = getPropertyPrice()
+  $propertyPriceInput.value = format(propertyPrice)
+}
+
+function updateMonthlyPayment() {
+  const monthlyPayment = getMonthlyPayment()
+  $monthlyPaymentLabel.textContent = `$${format(monthlyPayment)} MXN *`
+}
+
+function showPropertyPriceError() {
+  $propertyPriceError.classList.remove('hidden')
+}
+
+function hidePropertyPriceError() {
+  $propertyPriceError.classList.add('hidden')
+}
+
+function showDownPaymentError() {
+  $downPaymentError.classList.remove('hidden')
+}
+
+function hideDownPaymentError() {
+  $downPaymentError.classList.add('hidden')
+}
+
+// LISTENERS CALLBACKS
+
+function onInputPriceChange(event) {
+  const propertyPrice = valueToNumber(event.target.value)
+
+  updatePropertyPriceInput()
+
+  if (propertyPrice < MINIMUM_PROPERTY_PRICE) {
+    showPropertyPriceError()
+  } else {
+    hidePropertyPriceError()
+    updateDownPayment()
+    updateCreditAmount()
+    updateMonthlyPayment()
+  }
+}
+
+function onDownPaymentRateChange() {
+  updateDownPayment()
+  updateCreditAmount()
+  updateDownPaymentRateLabel()
+  updateMonthlyPayment()
+}
+
+function onDownPaymentInputChange(event) {
+  const downPayment = valueToNumber(event.target.value)
+  $downPaymentInput.value = format(downPayment)
+
+  const propertyPrice = getPropertyPrice()
+  const downPaymentRate = (downPayment * 100) / propertyPrice
+
+  if (downPaymentRate < MINIMIM_DOWN_PAYMENT_RATE) {
+    showDownPaymentError()
+  } else {
+    $downPaymentRateInput.value = downPaymentRate
+    updateDownPaymentRateLabel()
+    hideDownPaymentError()
+    updateCreditAmount(propertyPrice - downPayment)
+  }
+}
+
+function onLoanTermChange() {
+  updateOnLoanTermChange()
+  updateMonthlyPayment()
+}
