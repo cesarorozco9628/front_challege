@@ -1,3 +1,64 @@
+# Morgana Front Challenge
+_Interactive mortgage calculator._
+
+_Morgana-front-challenge project was created with vanilla Javascript, HTML and CSS from scratch._
+
+
+## Deployment 🚀
+Follow this [link to the project deployment](https://morgana.purplerose.dev/).
+
+
+## Starting 🚀
+These instructions will allow you to obtain a copy of the project on your local machine.
+
+### Pre-requirements 📋
+
+- Git
+- Node.js
+- A package manager like Yarn or Npm or Pnpm
+
+### Installation 🔧
+To start the application execute the following instructions:
+
+```
+git clone git@github.com:rrortegaa/morgana-front-challenge.git
+```
+or 
+```
+git clone https://github.com/rrortegaa/morgana-front-challenge.git
+```
+
+Clones the repository on your local machine, then access the directory and execute:
+
+```
+npm install
+```
+
+Installs and updates project dependencies. Finally, run:
+
+```
+npm run dev
+```
+
+The app runs in [localhost:5173](http://localhost:5173/)
+
+
+## Built with 🛠️
+
+* [BEM CSS](http://getbem.com/) - Methodology to create reusable components and code sharing in front-end development
+* [Git](https://git-scm.com/) - Free and open source distributed version control system
+* [Node](https://nodejs.org/en/) - JavaScript runtime environment
+* [Vite](https://vitejs.dev/) - A module bundler for modern JavaScript applications
+
+
+## Authors ✒️
+
+* **Rosa Ortega Aburto** - [rrortegaa](https://github.com/rrortegaa) - [purplerose](https://purplerose.dev)
+
+
+⭐️ ⭐️ ⭐️ ⭐️ ⭐️
+
+
 # front_challege
 
 Prueba tecnica para puesto Front End.
