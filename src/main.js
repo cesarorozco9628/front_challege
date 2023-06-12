@@ -1,3 +1,5 @@
+import { format, valueToNumber } from './utils'
+
 const MONTHLY_RATE = 0.0098
 const MINIMUM_PROPERTY_PRICE = 500000
 const MINIMIM_DOWN_PAYMENT_RATE = 10
@@ -14,6 +16,7 @@ const $creditAmountLabel = document.getElementById('credit-amount')
 const $monthlyPaymentLabel = document.getElementById('monthly-payment')
 const $propertyPriceError = document.getElementById('property-price__error')
 const $downPaymentError = document.getElementById('down-payment__error')
+const $button = document.getElementById('button')
 
 // EVENT LISTENERS REGISTRY
 
@@ -21,24 +24,7 @@ $propertyPriceInput.addEventListener('keyup', onInputPriceChange)
 $downPaymentRateInput.addEventListener('input', onDownPaymentRateChange)
 $downPaymentInput.addEventListener('keyup', onDownPaymentInputChange)
 $loanTermInput.addEventListener('input', onLoanTermChange)
-
-// UTILITIES
-
-function valueToNumber(stringValue) {
-  return stringValue === '' ? 0 : parseInt(stringValue.replace(/[^0-9]/g, ''))
-}
-
-function format(value) {
-  const formatOptions = {
-    style: 'decimal',
-    currency: 'MXN',
-    groupingSeparator: ',',
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0,
-  }
-
-  return value.toLocaleString('es-MX', formatOptions)
-}
+$button.addEventListener('click', onConfirm)
 
 // GETTERS
 
@@ -163,4 +149,22 @@ function onDownPaymentInputChange(event) {
 function onLoanTermChange() {
   updateOnLoanTermChange()
   updateMonthlyPayment()
+}
+
+function onConfirm() {
+  const propertyPrice = getPropertyPrice()
+  const downPayment = getDownPaymentAmount()
+  const downPaymentRate = (downPayment * 100) / propertyPrice
+  if (
+    propertyPrice < MINIMUM_PROPERTY_PRICE ||
+    downPaymentRate < MINIMIM_DOWN_PAYMENT_RATE
+  ) {
+    window.alert('Por favor ingresa valores que estén dentro de los parámetros válidos.')
+    return
+  }
+  const query = new URLSearchParams({
+    amount: getCreditAmount(),
+    monthlyPayment: getMonthlyPayment(),
+  })
+  window.location.assign(`/confirmation.html?${query.toString()}`)
 }

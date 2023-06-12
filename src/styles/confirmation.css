@@ -104,8 +104,8 @@ section {
   place-items: center start;
 }
 
-#credit-amount,
-#monthly-payment,
+#report-credit-amount,
+#report-monthly-payment,
 #interest-rate {
   font-weight: 700;
   place-self: center end;
